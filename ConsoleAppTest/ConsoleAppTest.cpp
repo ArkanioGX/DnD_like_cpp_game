@@ -115,7 +115,7 @@ int main()
 
     Player.swapWeapon(0);
 
-    Player.setHP(50);
+    Player.setHP(10);
     ///////////////////////////////////////////////////////////////////////////////////////
 
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
@@ -182,7 +182,7 @@ int main()
             Player.interactWithMerchant(&gMerchant);
             break;
         case 3:
-            Player.Heal();
+            Player.heal(20);
             break;
         case 9:
             break;

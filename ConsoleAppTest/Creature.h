@@ -13,6 +13,7 @@ private:
 	string cDesc;
 
 	unsigned int cHP;
+	unsigned int cMaxHP;
 
 	vector<Attack> cAttacks;
 
@@ -20,18 +21,20 @@ private:
 
 public:
 	Creature();
-	Creature(string cn, string cd, unsigned int chp, vector<Attack> catt, unsigned int cde);
+	Creature(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde);
 
-	void Attack(Creature c);
+	void attack(Creature c);
 
-	void Heal(unsigned int n);
+	void heal(unsigned int n);
 
 	string getName();
 	string getDesc();
 
-	virtual unsigned int getHP();
+	vector<Attack> getAttacks();
+
+	int getHP();
 	void setHP(unsigned int h);
 
-	virtual unsigned int getDef();
+	int getDef();
 	void setDef(unsigned int d);
 };

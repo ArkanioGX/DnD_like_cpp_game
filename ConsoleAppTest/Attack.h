@@ -2,12 +2,13 @@
 #include "Weapon.h"
 #include "DamageType.h"
 
+
 class Attack
 {
 private:
 	string label;
 
-	Weapon weaponUsed;
+	Weapon* weaponUsed;
 
 	unsigned int damagePoints;
 
@@ -16,6 +17,8 @@ private:
 	unsigned int bonusDamage;
 
 public:
-	bool Resolve();
+	Attack();
+	Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int bd);
+	bool resolve(int d);
 };
 

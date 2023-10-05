@@ -1,14 +1,14 @@
 #include "Character.h"
 #include <iostream>
 
-Character::Character() {
+Character::Character():Creature() {
 	chFirstName = "Arnold";
 	chLastName = "Noobius";
 	chCatchphrase = "I am Arnold Noobius from the caves of Hello World !";
 	chClass = CharacterClass::Knight;
 	chRace = CharacterRace::Gobelin;
 }
-Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw) 
+Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw):Creature()
 {
 	chFirstName = chfn;
 	chLastName = chln;
@@ -88,22 +88,6 @@ int Character::hasFreePlaces() {
 		i++;
 	}
 	return i;
-}
-
-void Character::Heal() {
-	if (chMoney >= 20) {
-		setHP(100);
-		chMoney -= 20;
-		cout << endl << "Player Healed !!" << endl;
-	}
-}
-
-void Character::Loot() {
-	int rdmID;
-	srand(time(NULL));
-	cout << "\n\n";
-	rdmID = rand() % 25;
-	addStoredWeapons(weaponLootTable[rdmID]);
 }
 
 void Character::listWeapons(){

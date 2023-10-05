@@ -2,6 +2,6 @@
 #include "Creature.h"
 class Monster : public Creature
 {
-
+	Weapon mLoot;
 };
 
