@@ -1,11 +1,1 @@
-﻿  ConsoleAppTest.cpp
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(18,71): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(22,78): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(26,82): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(30,83): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(34,64): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\Character.h(38,74): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\ConsoleAppTest.cpp(121,123): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\ConsoleAppTest.cpp(127,104): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mollet.clarence\source\repos\ConsoleAppTest\ConsoleAppTest\ConsoleAppTest.cpp(138,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  ConsoleAppTest.vcxproj -> C:\Users\mollet.clarence\source\repos\ConsoleAppTest\x64\Debug\ConsoleAppTest.exe
+﻿  ConsoleAppTest.vcxproj -> D:\repos\DnD_c++\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe

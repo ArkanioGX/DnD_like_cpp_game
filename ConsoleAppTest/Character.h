@@ -6,10 +6,11 @@
 #include "CharacterType.h"
 #include "Weapon.h"
 #include "Merchant.h"
+#include "Creature.h"
 
 using namespace std;
 
-class Character
+class Character : public Creature
 {
 private:
 
@@ -41,7 +42,6 @@ private:
 		Weapon("Thunder Ivory Trident", "Emit the same energy as a god",WeaponType::Spear,2,55,1500),
 		Weapon("RIZZ", "An impossible level of RIZZ",WeaponType::Sword,2,55,150000),
 	};
-	int rdmID;
 
 	string chFirstName;
 	string chLastName;
@@ -51,7 +51,6 @@ private:
 	CharacterRace chRace;
 
 	unsigned int chMoney = 0;
-	unsigned int chHp = 100;
 	
 	Weapon chWeapon;
 	array<Weapon,5> chStoredWeapons;
@@ -73,13 +72,10 @@ public:
 
 	unsigned int getMoney();
 	void setMoney(int m);
-	unsigned int getHP();
-	void setHP(int hp);
 
 	void Heal();
 
 	void Loot();
-	bool Attack(Character* enemy);
 
 	Weapon* getWeapon();
 	void setWeapon(Weapon w);

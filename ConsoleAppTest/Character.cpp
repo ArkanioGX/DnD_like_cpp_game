@@ -27,8 +27,6 @@ CharacterRace Character::getRace() { return chRace; };
 
 unsigned int Character::getMoney() { return chMoney; };
 void Character::setMoney(int m) { chMoney = m; };
-unsigned int Character::getHP() { return chHp; };
-void Character::setHP(int hp) { chHp = hp; };
 
 Weapon* Character::getWeapon() { return &chWeapon; };
 void Character::setWeapon(Weapon w) { chWeapon = w; };
@@ -101,6 +99,7 @@ void Character::Heal() {
 }
 
 void Character::Loot() {
+	int rdmID;
 	srand(time(NULL));
 	cout << "\n\n";
 	rdmID = rand() % 25;
@@ -111,7 +110,7 @@ void Character::listWeapons(){
 	cout << endl << "=================================================================================" << endl
 		<< "Inventory" << endl
 		<< "=================================================================================\n\n";
-	cout << endl << "Money : " << chMoney << " | HP : " << chHp << endl;
+	cout << endl << "Money : " << chMoney << " | HP : " << getHP() << endl;
 	cout << "Weapons List : " << endl;
 	Weapon w = chWeapon;
 	cout << endl << "Weapons Equipped : "<< endl 

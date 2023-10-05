@@ -1,0 +1,1 @@
+enum DamageType{Bludgeoning, Slashing, Piercing, Poisoning};
