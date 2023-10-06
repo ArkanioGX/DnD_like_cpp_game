@@ -6,8 +6,9 @@
 #include "Monster.h"
 #include "Merchant.h"
 
-void showPV(Creature p, Creature e);
+void showPV(Creature* p, Creature* e);
 std::string pvBar(int hp, int hpMax, int n);
+void Combat(Character* p, Creature* e);
 
 using namespace std;
 
@@ -120,7 +121,7 @@ int main()
     ///////////////////////////////////////////////////////////////////////////////////////
 
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
-    Creature Enemy = Creature("Goblin thief","It wants ur gold",20,20,2);
+    Creature Enemy = Creature();
 
     //Creation of a low tier Merchant weapon list
     array<Weapon, 6> wl =
@@ -133,19 +134,15 @@ int main()
     Merchant gMerchant = Merchant("Albert", "your local merchant", "Hello my dear friends, care for some good weapons ?", 1500, wl);
 
     //Creation of the weapon loot tables
-    int rdmID;
+    
     //Player Interaction
     do {
-        srand(time(NULL));
-        rdmID = rand() % 2;
-        if (rdmID == 0) { cout << Player.getFirstName() << " " << Player.getLastName() << " : " << Player.getCatchPhrase() << endl ; }
-        else { cout << Enemy.getName() << " : " << Enemy.getDesc() << endl; }
-        showPV(Player, Enemy);
+        
         cout << endl << "=================================================================================" << endl
              << "What will you do ?" << endl
              << "=================================================================================\n\n";
 
-        cout << "Edit :" << endl;
+        cout << "Choose :" << endl;
         if (Enemy.getHP() <= 0) {
             cout << "0- Loot " << endl;
         }
@@ -160,9 +157,9 @@ int main()
         switch (answer)                                             //Changes variables if changes wanted to be made
         {
         case 0:
+            Combat(&Player, &Enemy);
 
-
-            
+            break;
         case 1:
             int choice;
             do {
@@ -195,8 +192,8 @@ int main()
     
 }
 
-void showPV(Creature p, Creature e) {
-    cout << "Your PV [" << pvBar(p.getHP(), p.getMaxHP(), 20) << "] -|- Enemy PV [" << pvBar(e.getHP(), e.getMaxHP(), 20) << "]";
+void showPV(Creature* p, Creature* e) {
+    cout << "Your PV [" << pvBar(p->getHP(), p->getMaxHP(), 20) << "] -|- Enemy PV [" << pvBar(e->getHP(), e->getMaxHP(), 20) << "]";
 }
 
 string pvBar(int hp, int hpMax, int n) {
@@ -207,5 +204,35 @@ string pvBar(int hp, int hpMax, int n) {
         else { s.push_back('.'); }
     }
     return s;
+}
+
+void Combat(Character* p, Creature* e) {
+    bool playerTurn = true;
+
+    //Show PV + Little text intro
+    int rdmID;
+    srand(time(NULL));
+    rdmID = rand() % 2;
+    if (rdmID == 0) { cout << p->getFirstName() << " " << p->getLastName() << " : " << p->getCatchPhrase() << endl; }
+    else { cout << e->getName() << " : " << e->getDesc() << endl; }
+    showPV(p, e);
+    int answer;
+    if (playerTurn) {
+        do {
+
+            cout << endl << "=================================================================================" << endl
+                << "What will you do ?" << endl
+                << "=================================================================================\n\n";
+
+            cout << "Choose :" << endl;
+            
+            for (int i = 0; i < p->getAttacks().size(); i++) {
+
+            }
+            cin >> answer;
+            cout << "[INVALID INPUT]" << endl;
+
+        } while (answer != 9);
+    }
 }
 

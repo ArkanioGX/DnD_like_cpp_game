@@ -133,7 +133,6 @@
     <ClCompile Include="ConsoleAppTest.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="DamageType.h" />
-    <ClCompile Include="Loot.cpp" />
     <ClCompile Include="Merchant.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Weapon.cpp" />

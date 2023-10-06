@@ -2,9 +2,10 @@
 
 Attack::Attack() {
 	label = "Punch";
+	weaponUsed = new Weapon();
 	damagePoints = 2;
 	typeOfDamage = DamageType::Bludgeoning;
-	bonusDamage = 2;
+	bonusDamage = 0;
 }
 
 Attack::Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int bd) {
@@ -16,7 +17,11 @@ Attack::Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int
 }
 
 bool Attack::resolve(int d) {
-	if (d <= (damagePoints+bonusDamage)) {
+	int dice;
+	srand(time(NULL));
+	dice = (rand() % 20 + 1) + bonusDamage;
+
+	if (dice >= d) {
 		return true;
 	}
 	else {

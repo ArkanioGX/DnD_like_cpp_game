@@ -1,4 +1,6 @@
 #pragma once
+#include <time.h>
+#include <stdlib.h>
 #include "Weapon.h"
 #include "DamageType.h"
 

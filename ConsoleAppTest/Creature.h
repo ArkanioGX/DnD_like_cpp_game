@@ -21,7 +21,7 @@ private:
 
 public:
 	Creature();
-	Creature(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde);
+	Creature(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde, vector<Attack> catt);
 
 	void attack(Creature c);
 
@@ -31,6 +31,7 @@ public:
 	string getDesc();
 
 	vector<Attack> getAttacks();
+	void setAttacks(vector<Attack> a);
 
 	int getHP();
 	void setHP(unsigned int h);
