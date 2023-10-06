@@ -1,7 +1,12 @@
 #pragma once
 #include "Creature.h"
+#include "loot.h"
 class Monster : public Creature
 {
-	Weapon mLoot;
+private:
+	Weapon cLoot;
+public:
+	Monster();
+
 };
 

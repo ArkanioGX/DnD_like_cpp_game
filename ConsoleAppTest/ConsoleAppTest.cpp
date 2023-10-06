@@ -3,9 +3,10 @@
 #include <time.h>
 #include "Character.h"
 #include "CharacterCreation.h"
+#include "Monster.h"
 #include "Merchant.h"
 
-void showPV(Character p, Character e);
+void showPV(Creature p, Creature e);
 std::string pvBar(int hp, int hpMax, int n);
 
 using namespace std;
@@ -115,11 +116,11 @@ int main()
 
     Player.swapWeapon(0);
 
-    Player.setHP(10);
+    Player.setHP(25);
     ///////////////////////////////////////////////////////////////////////////////////////
 
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
-    Character Enemy = Character("Looty", "Gobby", "Gimme your loot", CharacterClass::Rogue, CharacterRace::Gobelin, eWeapon);
+    Creature Enemy = Creature("Goblin thief","It wants ur gold",20,20,2);
 
     //Creation of a low tier Merchant weapon list
     array<Weapon, 6> wl =
@@ -138,7 +139,7 @@ int main()
         srand(time(NULL));
         rdmID = rand() % 2;
         if (rdmID == 0) { cout << Player.getFirstName() << " " << Player.getLastName() << " : " << Player.getCatchPhrase() << endl ; }
-        else { cout << Enemy.getFirstName() << " " << Enemy.getLastName() << " : " << Enemy.getCatchPhrase() << endl; }
+        else { cout << Enemy.getName() << " : " << Enemy.getDesc() << endl; }
         showPV(Player, Enemy);
         cout << endl << "=================================================================================" << endl
              << "What will you do ?" << endl
@@ -194,8 +195,8 @@ int main()
     
 }
 
-void showPV(Character p, Character e) {
-    cout << "Your PV [" << pvBar(p.getHP(), 100, 20) << "] -|- Enemy PV [" << pvBar(e.getHP(), 100, 20) << "]";
+void showPV(Creature p, Creature e) {
+    cout << "Your PV [" << pvBar(p.getHP(), p.getMaxHP(), 20) << "] -|- Enemy PV [" << pvBar(e.getHP(), e.getMaxHP(), 20) << "]";
 }
 
 string pvBar(int hp, int hpMax, int n) {

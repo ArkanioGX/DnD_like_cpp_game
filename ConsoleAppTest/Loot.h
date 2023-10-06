@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <Array>
 #include <time.h>
 #include <stdlib.h>
@@ -6,7 +6,7 @@
 
 class Loot
 {
-	array<Weapon, 25> weaponLootTable =
+	const static array<Weapon, 25> weaponLootTable =
 	{ Weapon("Broken Sword", "What remain of a sword ",WeaponType::Sword,0.1,2,2),
 		Weapon("The Ambassador", "Royal Sword that have been owned by the Old King ",WeaponType::Sword,2,15,50),
 		Weapon("Sinister Diamond Katana", "Katana made in the deep caves with diamond ",WeaponType::Sword,5,25,150),
@@ -35,6 +35,6 @@ class Loot
 	};
 
 public:
-	Weapon getRandomLoot();
-};
+	static Weapon getRandomLoot();
+};*/
 

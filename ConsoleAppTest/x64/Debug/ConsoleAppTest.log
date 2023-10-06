@@ -1,4 +1,5 @@
-﻿  Attack.cpp
-  Monster.cpp
-  Generating Code...
+﻿  ConsoleAppTest.cpp
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(122,123): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(128,104): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(139,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   ConsoleAppTest.vcxproj -> D:\repos\DnD_c++\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe

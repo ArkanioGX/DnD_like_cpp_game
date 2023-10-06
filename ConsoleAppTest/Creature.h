@@ -1,4 +1,4 @@
-
+#pragma once
 #include<string>
 #include<vector>
 
@@ -34,6 +34,7 @@ public:
 
 	int getHP();
 	void setHP(unsigned int h);
+	int getMaxHP();
 
 	int getDef();
 	void setDef(unsigned int d);

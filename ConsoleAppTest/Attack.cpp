@@ -2,7 +2,7 @@
 
 Attack::Attack() {
 	label = "Punch";
-	damagePoints = weaponUsed->getWeaponDamage();
+	damagePoints = 2;
 	typeOfDamage = DamageType::Bludgeoning;
 	bonusDamage = 2;
 }
@@ -16,5 +16,10 @@ Attack::Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int
 }
 
 bool Attack::resolve(int d) {
-	return true;
+	if (d <= (damagePoints+bonusDamage)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }

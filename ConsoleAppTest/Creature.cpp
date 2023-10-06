@@ -23,6 +23,18 @@ void Creature::setHP(unsigned int h) {
 	cHP = h;
 }
 
+int Creature::getMaxHP() {
+	return cMaxHP;
+}
+
 void Creature::heal(unsigned int n) {
 	cHP = min(cMaxHP,cHP+n);
 }
+
+string Creature::getName() {
+	return cName;
+}
+string Creature::getDesc() {
+	return cDesc;
+}
+
