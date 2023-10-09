@@ -21,9 +21,10 @@ private:
 
 public:
 	Creature();
-	Creature(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde, vector<Attack> catt);
+	Creature(string cn, string cd, unsigned int chp, unsigned int cde, vector<Attack> catt);
+	Creature(string cn, string cd, unsigned int chp, unsigned int cde);
 
-	void attack(Creature c);
+	void attack(Creature* c, Attack a);
 
 	void heal(unsigned int n);
 

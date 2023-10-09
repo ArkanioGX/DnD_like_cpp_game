@@ -9,8 +9,8 @@ private:
 
 public:
 	Monster();
-	Monster(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde);
-	Monster(string cn, string cd, unsigned int chp, unsigned int cmhp, unsigned int cde, Weapon l);
+	Monster(string cn, string cd, unsigned int chp, unsigned int cde, vector<Attack> catt);
+	Monster(string cn, string cd, unsigned int chp, unsigned int cde, Weapon l);
 
 	Weapon getLoot();
 };

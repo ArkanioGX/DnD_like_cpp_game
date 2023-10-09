@@ -18,13 +18,32 @@ Attack::Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int
 
 bool Attack::resolve(int d) {
 	int dice;
-	srand(time(NULL));
+	srand(time(NULL)+rand());
 	dice = (rand() % 20 + 1) + bonusDamage;
 
-	if (dice >= d) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return (dice >= d);
+}
+
+string Attack::getLabel() {
+	return label;
+}
+
+Weapon* Attack::getWeaponUsed() {
+	return weaponUsed;
+}
+
+void Attack::setWeaponUsed(Weapon* w) {
+	weaponUsed = w;
+}
+
+unsigned int Attack::getDamagePoints() {
+	return damagePoints;
+}
+
+DamageType Attack::getDamageType() {
+	return typeOfDamage;
+}
+
+unsigned int Attack::getBonusDamage() {
+	return bonusDamage;
 }

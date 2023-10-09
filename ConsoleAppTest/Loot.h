@@ -38,7 +38,7 @@ public:
 			Weapon("RIZZ", "An impossible level of RIZZ",WeaponType::Sword,2,55,150000),
 		};
 		int rdmID;
-		srand(time(NULL));
+		srand(time(NULL)+rand());
 		rdmID = rand() % 25;
 		Weapon w = weaponLootTable[rdmID];
 		return w;

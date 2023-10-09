@@ -8,7 +8,7 @@ Character::Character():Creature() {
 	chClass = CharacterClass::Knight;
 	chRace = CharacterRace::Gobelin;
 }
-Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw):Creature()
+Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw):Creature(chfn,chcp,100,5)
 {
 	chFirstName = chfn;
 	chLastName = chln;
@@ -36,6 +36,15 @@ void Character::swapWeapon(int i) {
 		chWeapon = chStoredWeapons[i];
 		chStoredWeapons[i] = tempWeapon;
 		cout << chWeapon.getWeaponName() + " Equipped" << endl;
+
+		vector<Attack> att;
+		for (int i = 0; i < getAttacks().size(); i++) { //Change the weapon on the attacks
+			Attack a = getAttacks()[i];
+			a.setWeaponUsed(&chWeapon);
+			att.push_back(a);
+		}
+
+		setAttacks(att);
 	}
 	else {
 		cout << "\n\n /!\\ " << chStoredWeapons[i].getWeaponName() + " not Equipped (Might be a weapon type different from your class) /!\\" << endl;

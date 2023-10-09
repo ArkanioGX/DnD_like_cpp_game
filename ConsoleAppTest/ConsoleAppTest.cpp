@@ -6,9 +6,10 @@
 #include "Monster.h"
 #include "Merchant.h"
 
-void showPV(Creature* p, Creature* e);
-std::string pvBar(int hp, int hpMax, int n);
-void Combat(Character* p, Creature* e);
+void showPV(Creature* p, Creature* e); //Show little pv bar
+std::string pvBar(int hp, int hpMax, int n);  //Prepare the numbers of | and . for the showPV()
+void Combat(Character* p, Creature* e); //Engage in a combat loop with 2 creatures
+Monster newEnemy(); //Create a new enemy
 
 using namespace std;
 
@@ -117,11 +118,19 @@ int main()
 
     Player.swapWeapon(0);
 
-    Player.setHP(25);
+    vector<Attack> vAtt = {
+    Attack("Slash",Player.getWeapon(),Player.getWeapon()->getWeaponDamage(),DamageType::Slashing,1),
+    Attack("Double Time",Player.getWeapon(),Player.getWeapon()->getWeaponDamage()*1.5,DamageType::Slashing,2) };
+    Player.setAttacks(vAtt);
     ///////////////////////////////////////////////////////////////////////////////////////
 
+    //First enemy setup
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
-    Creature Enemy = Creature();
+    Creature Enemy = Monster();
+    vAtt = {
+    Attack("Punch",new Weapon(),2,DamageType::Bludgeoning,1),
+    Attack("Double Time",&eWeapon,eWeapon.getWeaponDamage(),DamageType::Slashing,2)};
+    Enemy.setAttacks(vAtt);
 
     //Creation of a low tier Merchant weapon list
     array<Weapon, 6> wl =
@@ -142,16 +151,10 @@ int main()
              << "What will you do ?" << endl
              << "=================================================================================\n\n";
 
-        cout << "Choose :" << endl;
-        if (Enemy.getHP() <= 0) {
-            cout << "0- Loot " << endl;
-        }
-        else {
-            cout << "0- Attack " << endl;
-        }
-        cout << "1- Check Inventory" << endl
+        cout << "Choose :" << endl
+             << "0- Fight " << endl
+            << "1- Check Inventory" << endl
             << "2- Shop " << endl
-            << "3- Heal (20$)" << endl
             << "9- Quit " << endl;
         cin >> answer;
         switch (answer)                                             //Changes variables if changes wanted to be made
@@ -159,8 +162,16 @@ int main()
         case 0:
             Combat(&Player, &Enemy);
 
+            if (Player.getHP() == 0) { //Checks if the player died in the combat
+                cout << endl << "YOU DIED ! GGS" << endl;
+                return 0;
+            }
+
+            Player.setHP(Player.getMaxHP()); //Heals the player after a fight
+            Enemy = newEnemy(); //Prepare new Enemy for next fight
+
             break;
-        case 1:
+        case 1:     //Check the inventory and give the possibility to equip weapons
             int choice;
             do {
                 Player.listWeapons();
@@ -176,19 +187,17 @@ int main()
                 }
             } while (choice != 9 );
             break;
-        case 2:
+        case 2:     //Engage in a loop for the merchant shop
             Player.interactWithMerchant(&gMerchant);
             break;
-        case 3:
-            Player.heal(20);
+        case 9:     //Exit the game
             break;
-        case 9:
-            break;
-        default:
+        default:    
             cout << "[INVALID INPUT]" << endl;
             break;
         }
     } while (answer != 9);
+    
     
 }
 
@@ -208,31 +217,92 @@ string pvBar(int hp, int hpMax, int n) {
 
 void Combat(Character* p, Creature* e) {
     bool playerTurn = true;
+    bool fightFinished = false;
+    do //Main fight loop
+    {
+        //Show PV + Little text intro
+        int rdmID;
+        int answer;
+        if (playerTurn) {
+            do {
+                
+                srand(time(NULL));
+                rdmID = rand() % 2;
+                if (rdmID == 0) { cout << p->getFirstName() << " " << p->getLastName() << " : " << p->getCatchPhrase() << endl; }
+                else { cout << e->getName() << " : " << e->getDesc() << endl; }
+                showPV(p, e);
+                cout << endl << "=================================================================================" << endl
+                    << "What will you do ?" << endl
+                    << "=================================================================================\n\n";
 
-    //Show PV + Little text intro
-    int rdmID;
-    srand(time(NULL));
-    rdmID = rand() % 2;
-    if (rdmID == 0) { cout << p->getFirstName() << " " << p->getLastName() << " : " << p->getCatchPhrase() << endl; }
-    else { cout << e->getName() << " : " << e->getDesc() << endl; }
-    showPV(p, e);
-    int answer;
-    if (playerTurn) {
-        do {
+                cout << "Choose :" << endl;
 
-            cout << endl << "=================================================================================" << endl
-                << "What will you do ?" << endl
-                << "=================================================================================\n\n";
-
-            cout << "Choose :" << endl;
-            
-            for (int i = 0; i < p->getAttacks().size(); i++) {
-
+                for (int i = 0; i < p->getAttacks().size(); i++) {
+                    Attack a = p->getAttacks()[i];
+                    cout << i << " | " << a.getLabel() << " - DMG : " << a.getDamagePoints() << " | BONUS : " << a.getBonusDamage() << endl;
+                }
+                cout << p->getAttacks().size() << " | Heal - +10HP" << endl;
+                cout << "9 | Flee" << endl;
+                cin >> answer;
+                if (answer < 0 || (answer >= p->getAttacks().size() + 1 && answer != 9)) {
+                    cout << "[INVALID INPUT]" << endl;
+                }
+            } while (answer != 9 && (answer < 0 || answer >= p->getAttacks().size() + 1 ));
+            if (answer == p->getAttacks().size()) {
+                p->heal(10);
+                cout << p->getName() << " healed 10 HP " << endl;
             }
-            cin >> answer;
-            cout << "[INVALID INPUT]" << endl;
-
-        } while (answer != 9);
-    }
+            else if (answer == 9) {
+                cout << "You fled the fight !" << endl;
+                return;
+            }
+            else {
+                p->attack(e, p->getAttacks()[answer]);
+                Weapon* w = p->getWeapon();
+                w->setWeaponDurabilty(w->getWeaponDurability() - 0.05);
+                if (e->getHP() == 0) {
+                    fightFinished = true;
+                    cout << e->getName() << " has been slain " << endl;
+                    p->addStoredWeapons(Loot::getRandomLoot());
+                }
+            }
+        }
+        else {
+            srand(time(NULL));
+            rdmID = rand() % 100;
+            if (rdmID < 5) {
+                e->heal(10);
+                cout << e->getName() << " healed 10 HP " << endl;
+            }
+            else if (rdmID < 6) {
+                cout << e->getName() << " ran away " << endl;
+                fightFinished = true;
+            }
+            else {
+                rdmID = rand() % e->getAttacks().size();
+                e->attack(p, e->getAttacks()[rdmID]);
+                if (p->getHP() == 0) {
+                    fightFinished = true;
+                    cout << p->getName() << " has been slain " << endl;
+                }
+            }
+        }
+        playerTurn = !playerTurn;
+    } while (!fightFinished);
 }
 
+Monster newEnemy() {
+    vector<Monster> cList = {
+        Monster("Thundercat","Every news about this cat is a shocking news",50,1, vector<Attack>{
+            Attack("Headbutt", new Weapon(), 3, DamageType::Bludgeoning, 0),
+            Attack("Zap", new Weapon(), 5, DamageType::Bludgeoning, 1)}),
+        Monster("Blazebug","Does annoying buzzing sound but on fire",20,1, vector<Attack>{
+            Attack("Bzzzzzzzzzzzz", new Weapon(), 2, DamageType::Bludgeoning, 0),
+            Attack("Fire Fart", new Weapon(), 1, DamageType::Bludgeoning, 0)}),
+    };
+
+    srand(time(NULL) + rand());
+    int rdm = rand() % cList.size();
+
+    return cList[rdm];
+}
