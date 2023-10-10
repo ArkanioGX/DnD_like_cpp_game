@@ -3,23 +3,21 @@
 Attack::Attack() {
 	label = "Punch";
 	weaponUsed = new Weapon();
-	damagePoints = 2;
+	attDices = Dice();
 	typeOfDamage = DamageType::Bludgeoning;
-	bonusDamage = 0;
 }
 
-Attack::Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int bd) {
+Attack::Attack(string n, Weapon *w, Dice dd, DamageType dt) {
 	label = n;
 	weaponUsed = w;
-	damagePoints = dp;
+	attDices = dd;
 	typeOfDamage = dt;
-	bonusDamage = bd;
 }
 
 bool Attack::resolve(int d) {
 	int dice;
 	srand(time(NULL)+rand());
-	dice = (rand() % 20 + 1) + bonusDamage;
+	dice = (rand() % 20 + 1) + attDices.getBonus();
 
 	return (dice >= d);
 }
@@ -36,14 +34,10 @@ void Attack::setWeaponUsed(Weapon* w) {
 	weaponUsed = w;
 }
 
-unsigned int Attack::getDamagePoints() {
-	return damagePoints;
+Dice Attack::getDices() {
+	return attDices;
 }
 
 DamageType Attack::getDamageType() {
 	return typeOfDamage;
-}
-
-unsigned int Attack::getBonusDamage() {
-	return bonusDamage;
 }

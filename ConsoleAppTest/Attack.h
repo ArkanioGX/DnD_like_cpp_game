@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "Weapon.h"
 #include "DamageType.h"
+#include "Dice.h"
 
 
 class Attack
@@ -12,15 +13,13 @@ private:
 
 	Weapon* weaponUsed;
 
-	unsigned int damagePoints;
+	Dice attDices;
 
 	DamageType typeOfDamage;
 
-	unsigned int bonusDamage;
-
 public:
 	Attack();
-	Attack(string n, Weapon *w, unsigned int dp, DamageType dt, unsigned int bd);
+	Attack(string n, Weapon *w, Dice dd, DamageType dt);
 	bool resolve(int d);
 
 	string getLabel();
@@ -28,10 +27,9 @@ public:
 	Weapon* getWeaponUsed();
 	void setWeaponUsed(Weapon* w);
 
-	unsigned int getDamagePoints();
+	Dice getDices();
 
 	DamageType getDamageType();
 
-	unsigned int getBonusDamage();
 };
 

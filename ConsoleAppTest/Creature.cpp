@@ -9,7 +9,7 @@ Creature::Creature() {
 	cHP = 100;
 	cMaxHP = 100;
 	cDef = 5;
-	cAttacks = vector<Attack>{ Attack("Stab",new Weapon(), 5, DamageType::Piercing, 0) };
+	cAttacks = vector<Attack>{ Attack("Stab",new Weapon(), Dice(1,6,0), DamageType::Piercing)};
 }
 
 Creature::Creature(string cn, string cd, unsigned int chp, unsigned int cde, vector<Attack> catt) {
@@ -27,7 +27,7 @@ Creature::Creature(string cn, string cd, unsigned int chp, unsigned int cde) {
 	cHP = chp;
 	cMaxHP = chp;
 	cDef = cde;
-	cAttacks = vector<Attack>{ Attack("Punch",new Weapon(), 2, DamageType::Bludgeoning, 0) };
+	cAttacks = vector<Attack>{ Attack("Punch",new Weapon(), Dice(1,3,0), DamageType::Bludgeoning)};
 }
 
 int Creature::getHP() {
@@ -72,9 +72,13 @@ void Creature::setDef(unsigned int d) {
 void Creature::attack(Creature* c, Attack a) {
 	bool attackSuccess = a.resolve(c->getDef());
 	if (attackSuccess) {
-		int dmg = a.getDamagePoints() + a.getBonusDamage() ;
-		cout << endl << cName << " used " << a.getLabel() << " and hit " << c->getName() << " for " << dmg << " HP " << endl;
-		c->setHP(max(c->getHP() - dmg,0));
+		vector<int> dmg;
+		dmg = a.getDices().Roll();
+		int dmgTotal = Dice::getRollTotal(dmg);
+		cout << endl << cName << " used " << a.getLabel() << " and hit " << c->getName() << " for " << Dice::getRollString(dmg) << " HP " << endl;
+		c->setHP(max(c->getHP() - dmgTotal,0));
+		Weapon* w = a.getWeaponUsed();
+		w->setWeaponDurabilty(max(w->getWeaponDurability() - 0.05,0.01));
 	}
 	else {
 		cout << "Attack missed !" << endl;

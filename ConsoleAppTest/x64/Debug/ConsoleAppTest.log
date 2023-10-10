@@ -1,16 +1,14 @@
 ﻿  ConsoleAppTest.cpp
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(14,72): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(18,79): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(22,83): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(26,84): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(30,65): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(34,75): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\loot.h(41,19): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(123,82): warning C4244: 'argument' : conversion de 'double' en 'unsigned int', perte possible de données
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(128,123): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(138,104): warning C4305: 'argument' : troncation de 'double' à 'float'
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(229,27): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(262,64): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(271,23): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-D:\Projects\ArtFX\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(304,22): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  ConsoleAppTest.vcxproj -> D:\Projects\ArtFX\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(14,72): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(18,79): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(22,83): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(26,84): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(30,65): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(34,75): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\loot.h(41,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(128,123): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(138,104): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(230,27): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(273,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(307,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ConsoleAppTest.vcxproj -> D:\repos\DnD_c++\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe

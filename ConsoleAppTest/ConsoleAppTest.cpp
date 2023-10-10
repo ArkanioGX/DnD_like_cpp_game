@@ -119,8 +119,8 @@ int main()
     Player.swapWeapon(0);
 
     vector<Attack> vAtt = {
-    Attack("Slash",Player.getWeapon(),Player.getWeapon()->getWeaponDamage(),DamageType::Slashing,1),
-    Attack("Double Time",Player.getWeapon(),Player.getWeapon()->getWeaponDamage()*1.5,DamageType::Slashing,2) };
+    Attack("Slash",Player.getWeapon(),Dice(1,6,1),DamageType::Slashing),
+    Attack("Double Time",Player.getWeapon(),Dice(2,4,2),DamageType::Slashing)};
     Player.setAttacks(vAtt);
     ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,8 +128,8 @@ int main()
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
     Creature Enemy = Monster();
     vAtt = {
-    Attack("Punch",new Weapon(),2,DamageType::Bludgeoning,1),
-    Attack("Double Time",&eWeapon,eWeapon.getWeaponDamage(),DamageType::Slashing,2)};
+    Attack("Punch",new Weapon(),Dice(1,4,0),DamageType::Bludgeoning),
+    Attack("Double Time",&eWeapon,Dice(2,3,1),DamageType::Slashing)};
     Enemy.setAttacks(vAtt);
 
     //Creation of a low tier Merchant weapon list
@@ -218,6 +218,7 @@ string pvBar(int hp, int hpMax, int n) {
 void Combat(Character* p, Creature* e) {
     bool playerTurn = true;
     bool fightFinished = false;
+    cout << "\n\n\n\n\n\n\n\n\n";
     do //Main fight loop
     {
         //Show PV + Little text intro
@@ -239,7 +240,7 @@ void Combat(Character* p, Creature* e) {
 
                 for (int i = 0; i < p->getAttacks().size(); i++) {
                     Attack a = p->getAttacks()[i];
-                    cout << i << " | " << a.getLabel() << " - DMG : " << a.getDamagePoints() << " | BONUS : " << a.getBonusDamage() << endl;
+                    cout << i << " | " << a.getLabel() << " - DMG : " << a.getDices().getString() << endl;
                 }
                 cout << p->getAttacks().size() << " | Heal - +10HP" << endl;
                 cout << "9 | Flee" << endl;
@@ -248,6 +249,7 @@ void Combat(Character* p, Creature* e) {
                     cout << "[INVALID INPUT]" << endl;
                 }
             } while (answer != 9 && (answer < 0 || answer >= p->getAttacks().size() + 1 ));
+            cout << "\n\n\n\n\n\n\n\n\n";
             if (answer == p->getAttacks().size()) {
                 p->heal(10);
                 cout << p->getName() << " healed 10 HP " << endl;
@@ -258,8 +260,8 @@ void Combat(Character* p, Creature* e) {
             }
             else {
                 p->attack(e, p->getAttacks()[answer]);
-                Weapon* w = p->getWeapon();
-                w->setWeaponDurabilty(w->getWeaponDurability() - 0.05);
+                
+                
                 if (e->getHP() == 0) {
                     fightFinished = true;
                     cout << e->getName() << " has been slain " << endl;
@@ -286,6 +288,7 @@ void Combat(Character* p, Creature* e) {
                     cout << p->getName() << " has been slain " << endl;
                 }
             }
+            
         }
         playerTurn = !playerTurn;
     } while (!fightFinished);
@@ -294,11 +297,11 @@ void Combat(Character* p, Creature* e) {
 Monster newEnemy() {
     vector<Monster> cList = {
         Monster("Thundercat","Every news about this cat is a shocking news",50,1, vector<Attack>{
-            Attack("Headbutt", new Weapon(), 3, DamageType::Bludgeoning, 0),
-            Attack("Zap", new Weapon(), 5, DamageType::Bludgeoning, 1)}),
+            Attack("Headbutt", new Weapon(), Dice(1,3,0), DamageType::Bludgeoning),
+            Attack("Zap", new Weapon(), Dice(1,6,2), DamageType::Bludgeoning)}),
         Monster("Blazebug","Does annoying buzzing sound but on fire",20,1, vector<Attack>{
-            Attack("Bzzzzzzzzzzzz", new Weapon(), 2, DamageType::Bludgeoning, 0),
-            Attack("Fire Fart", new Weapon(), 1, DamageType::Bludgeoning, 0)}),
+            Attack("Bzzzzzzzzzzzz", new Weapon(), Dice(1,2,0), DamageType::Bludgeoning),
+            Attack("Fire Fart", new Weapon(), Dice(2,3,1), DamageType::Bludgeoning)}),
     };
 
     srand(time(NULL) + rand());
