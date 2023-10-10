@@ -102,6 +102,47 @@ Weapon CharacterCreation::getBaseClassWeapon(CharacterClass cc){
     return cBW;
 }
 
+vector<Attack> CharacterCreation::getClassAttacks(CharacterClass cc, Weapon* w) {
+    vector <Attack> vAtt;
+    switch (cc)
+    {
+    case CharacterClass::Archer:
+        vAtt = {
+            Attack("Shoot",w,Dice(1,8,0),DamageType::Piercing),
+            Attack("Magic Arrow",w,Dice(2,4,1),DamageType::Piercing) };
+        break;
+    case CharacterClass::Rogue:
+        vAtt = {
+            Attack("Stab",w,Dice(1,6,1),DamageType::Piercing),
+            Attack("Double Slash",w,Dice(2,4,2),DamageType::Slashing) };
+        break;
+    case CharacterClass::Mage:
+        vAtt = {
+            Attack("Mana ball",w,Dice(1,4,2),DamageType::Bludgeoning),
+            Attack("Arcane Beam",w,Dice(1,10,0),DamageType::Poisoning) };
+        break;
+    case CharacterClass::Knight:
+        vAtt = {
+            Attack("Shield Charge",w,Dice(1,4,2),DamageType::Bludgeoning),
+            Attack("Pierce",w,Dice(1,10,0),DamageType::Piercing) };
+        break;
+    case CharacterClass::Barbarian:
+        vAtt = {
+            Attack("Slash",w,Dice(1,6,1),DamageType::Slashing),
+            Attack("Throw Axe",w,Dice(1,10,0),DamageType::Slashing) };
+        break;
+    case CharacterClass::Lancer:
+        vAtt = {
+            Attack("Disarm",w,Dice(1,4,2),DamageType::Slashing),
+            Attack("Double Pierce",w,Dice(2,5,2),DamageType::Piercing) };
+        break;
+    default:
+        cout << "[INVALID ANSWER]" << endl;
+        break;
+    }
+    return vAtt;
+}
+
 string CharacterCreation::changeFirstName(){
     string Phrase;
     cout << "What's your first name ?" << endl;

@@ -32,7 +32,7 @@ private:
 
 public:
 	Character();
-	Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw);
+	Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw, vector<Attack> cha);
 
 	string getFirstName();
 	string getLastName();

@@ -8,7 +8,7 @@ Character::Character():Creature() {
 	chClass = CharacterClass::Knight;
 	chRace = CharacterRace::Gobelin;
 }
-Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw):Creature(chfn,chcp,100,5)
+Character::Character(string chfn, string chln, string chcp, CharacterClass chc, CharacterRace chr, Weapon chw, vector<Attack> cha):Creature(chfn,chcp,100,5, cha)
 {
 	chFirstName = chfn;
 	chLastName = chln;

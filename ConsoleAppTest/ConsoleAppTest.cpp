@@ -45,6 +45,7 @@ int main()
     
     CharacterClass cC = CharacterCreation::changeClass();
     Weapon cBW = CharacterCreation::getBaseClassWeapon(cC);
+    vector<Attack> vA = CharacterCreation::getClassAttacks(cC, &cBW);
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
@@ -94,6 +95,7 @@ int main()
         case 4:
             cC = CharacterCreation::changeClass();
             cBW = CharacterCreation::getBaseClassWeapon(cC);
+            vA = CharacterCreation::getClassAttacks(cC, &cBW);
             break;
         case 9:
             break;
@@ -104,7 +106,7 @@ int main()
     } while (answer != 9);
 
     //Player Created
-    Character Player = Character(cFName,cLName,cCPhrase,cC,cR,cBW);
+    Character Player = Character(cFName,cLName,cCPhrase,cC,cR,cBW, vA);
     
     //////////////////////////////// TEST SECTION /////////////////////////////////////////
     cout << Player.getCatchPhrase() << endl;
@@ -118,16 +120,12 @@ int main()
 
     Player.swapWeapon(0);
 
-    vector<Attack> vAtt = {
-    Attack("Slash",Player.getWeapon(),Dice(1,6,1),DamageType::Slashing),
-    Attack("Double Time",Player.getWeapon(),Dice(2,4,2),DamageType::Slashing)};
-    Player.setAttacks(vAtt);
     ///////////////////////////////////////////////////////////////////////////////////////
 
     //First enemy setup
     Weapon eWeapon = Weapon("Iron Dagger", "A really basic dagger that can be found at every Costco", WeaponType::Dagger, 0.8, 7, 20);
     Creature Enemy = Monster();
-    vAtt = {
+    vector<Attack> vAtt = {
     Attack("Punch",new Weapon(),Dice(1,4,0),DamageType::Bludgeoning),
     Attack("Double Time",&eWeapon,Dice(2,3,1),DamageType::Slashing)};
     Enemy.setAttacks(vAtt);
@@ -140,7 +138,7 @@ int main()
     Weapon("Spruce Staff", "A really basic staff that can be found at every McDonalds",WeaponType::Staff,1,7,20),
     Weapon("Iron Spear", "A really basic spear that can be bought on Amazon",WeaponType::Spear,1.5,7,20),
     Weapon("Iron Axe", "A really basic axe that was stolen from your local lumberjack",WeaponType::Axe,2,7,20), };
-    Merchant gMerchant = Merchant("Albert", "your local merchant", "Hello my dear friends, care for some good weapons ?", 1500, wl);
+    Merchant gMerchant = Merchant("Albert", "your local merchant", "Hello my dear friends, care for some good weapons ?", 15000, wl);
 
     //Creation of the weapon loot tables
     

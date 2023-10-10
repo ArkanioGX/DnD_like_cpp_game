@@ -10,5 +10,6 @@ public:
 	static string changeFirstName();
 	static string changeLastName();
 	static string changeCatchPhrase();
+	static vector<Attack> getClassAttacks(CharacterClass cc, Weapon* w);
 };
 
