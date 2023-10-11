@@ -1,5 +1,43 @@
-﻿  Character.cpp
-D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(72,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(81,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\repos\DnD_c++\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(82,61): warning C4018: '>=': signed/unsigned mismatch
-  ConsoleAppTest.vcxproj -> D:\repos\DnD_c++\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe
+﻿  Attack.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Attack.cpp(19,18): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Character.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(72,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(81,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Character.cpp(82,61): warning C4018: '>=': signed/unsigned mismatch
+  CharacterCreation.cpp
+  ConsoleAppTest.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(16,72): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(20,79): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(24,83): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(28,84): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(32,65): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(36,75): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(43,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(116,123): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(126,104): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(218,27): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(261,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\ConsoleAppTest.cpp(295,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Creature.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Creature.cpp(81,28): warning C4244: 'argument': conversion from 'const _Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+  DamageType.h
+  Dice.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Dice.cpp(17,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\Dice.cpp(18,20): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Merchant.cpp
+  Monster.cpp
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(16,72): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(20,79): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(24,83): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(28,84): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(32,65): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(36,75): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\ConsoleAppTest\loot.h(43,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Weapon.cpp
+  Generating Code...
+  LINK : C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe not found or not built by the last incremental link; performing full link
+  ConsoleAppTest.vcxproj -> C:\Users\mollet.clarence\Documents\GitHub\DnD_like_cpp_game\x64\Debug\ConsoleAppTest.exe
