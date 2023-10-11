@@ -14,7 +14,7 @@ Attack::Attack(string n, Weapon *w, Dice dd, DamageType dt) {
 	typeOfDamage = dt;
 }
 
-bool Attack::resolve(int d) {
+bool Attack::resolve(int d) { 
 	int dice;
 	srand(time(NULL)+rand());
 	dice = (rand() % 20 + 1) + attDices.getBonus();

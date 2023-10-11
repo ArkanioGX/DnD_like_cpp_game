@@ -24,20 +24,20 @@ public:
 	Creature(string cn, string cd, unsigned int chp, unsigned int cde, vector<Attack> catt);
 	Creature(string cn, string cd, unsigned int chp, unsigned int cde);
 
-	void attack(Creature* c, Attack a);
+	void attack(Creature* c, Attack a); //Attack a creature class object (like player or enemies)
 
-	void heal(unsigned int n);
+	void heal(unsigned int n); //Heal the creature
 
-	string getName();
-	string getDesc();
+	string getName(); //Get the name of tthe creature
+	string getDesc(); //Get the description of the creature
 
-	vector<Attack> getAttacks();
-	void setAttacks(vector<Attack> a);
+	vector<Attack> getAttacks(); //Get the attacks available on this creature
+	void setAttacks(vector<Attack> a); //Change the attacks on this creature
 
-	int getHP();
-	void setHP(unsigned int h);
-	int getMaxHP();
+	int getHP(); //Get the remaining HP
+	void setHP(unsigned int h); //Change the hp value
+	int getMaxHP(); //Get the maximum hp value
 
-	int getDef();
-	void setDef(unsigned int d);
+	int getDef(); //Get the defense score
+	void setDef(unsigned int d); //Change the defence score
 };

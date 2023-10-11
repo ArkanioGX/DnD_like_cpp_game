@@ -30,7 +30,7 @@ void Character::setMoney(int m) { chMoney = m; };
 
 Weapon* Character::getWeapon() { return &chWeapon; };
 void Character::setWeapon(Weapon w) { chWeapon = w; };
-void Character::swapWeapon(int i) {
+void Character::swapWeapon(int i) { //swap the weapon used with a weapon in the inventory
 	if (chStoredWeapons[i].getWeaponType() == chClass) {
 		Weapon tempWeapon = chWeapon;
 		chWeapon = chStoredWeapons[i];
@@ -54,7 +54,7 @@ void Character::swapWeapon(int i) {
 
 array<Weapon,5> Character::getStoredWeapons() { return chStoredWeapons; };
 
-bool Character::addStoredWeapons(Weapon w) { 
+bool Character::addStoredWeapons(Weapon w) {  //Give the player a weapon in the inventory
 	for (int i = 0; i < 5; i++) {
 		if (chStoredWeapons[i].getWeaponType() == WeaponType::None) {
 			chStoredWeapons[i] = w;
@@ -66,17 +66,17 @@ bool Character::addStoredWeapons(Weapon w) {
 	return false;
 };
 
-bool Character::Buy(Weapon w, Merchant* m) {
+bool Character::Buy(Weapon w, Merchant* m) { //Ability to buy 
 	if (w.getWeaponCost() * w.getWeaponDurability() <= chMoney && hasFreePlaces() != 5) {
 		chStoredWeapons[hasFreePlaces()] = w;
-		int price = w.getWeaponCost() * w.getWeaponDurability();
+		int price = w.getWeaponCost() * (0.2+w.getWeaponDurability());
 		chMoney -= price;
 		m->setMoney(m->getMoney() + price);
 		return true;
 	}
 	return false;
 };
-bool Character::Sell(int i, Merchant* m) {
+bool Character::Sell(int i, Merchant* m) { //Ability to sell
 	Weapon w = chStoredWeapons[i];
 	int price = w.getWeaponCost() * w.getWeaponDurability();
 	if (w.getWeaponType() != WeaponType::None && m->getMoney() >= price) {
@@ -88,7 +88,7 @@ bool Character::Sell(int i, Merchant* m) {
 	return false;
 };
 
-int Character::hasFreePlaces() {
+int Character::hasFreePlaces() { //Check if the inventory can take one more weapon
 	int i = 0;
 	while (i < 5) {
 		if (chStoredWeapons[i].getWeaponType() == WeaponType::None) {
@@ -99,7 +99,7 @@ int Character::hasFreePlaces() {
 	return i;
 }
 
-void Character::listWeapons(){
+void Character::listWeapons(){ //Output the inventory
 	cout << endl << "=================================================================================" << endl
 		<< "Inventory" << endl
 		<< "=================================================================================\n\n";
@@ -121,7 +121,7 @@ void Character::listWeapons(){
 	}
 }
 
-void Character::interactWithMerchant(Merchant* m) {
+void Character::interactWithMerchant(Merchant* m) { //Engage in a loop with the merchant
 	int answer, choice;
 	
 	do {
@@ -144,7 +144,7 @@ void Character::interactWithMerchant(Merchant* m) {
 				for (int i = 0; i < 6 ; i++)
 				{
 					Weapon w = m->getWeaponInventory()[i];
-					cout << i << "- " << w.getWeaponName() << " - " << (w.getWeaponCost() * w.getWeaponDurability()) << "$ (" << w.getWeaponDurability()*100 <<"%)" << endl;
+					cout << i << "- " << w.getWeaponName() << " - " << (w.getWeaponCost() * (0.2+w.getWeaponDurability())) << "$ (" << w.getWeaponDurability()*100 <<"%)" << endl;
 					cout << "		Damage - " << w.getWeaponDamage() << " | Class Required : " << CharacterClassString[w.getWeaponType()] << endl
 						<< "		Description - " << w.getWeaponDesc() << endl;
 						

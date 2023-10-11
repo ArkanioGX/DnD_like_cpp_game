@@ -9,7 +9,9 @@ class Loot
 private:
 	
 public:
+	//Give a random weapon from the loot table
 	static Weapon getRandomLoot() {
+		//Available loot table
 		const array<Weapon, 25> weaponLootTable =
 		{ Weapon("Broken Sword", "What remain of a sword ",WeaponType::Sword,0.1,2,2),
 			Weapon("The Ambassador", "Royal Sword that have been owned by the Old King ",WeaponType::Sword,2,15,50),

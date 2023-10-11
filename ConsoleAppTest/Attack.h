@@ -20,16 +20,16 @@ private:
 public:
 	Attack();
 	Attack(string n, Weapon *w, Dice dd, DamageType dt);
-	bool resolve(int d);
+	bool resolve(int d); //Check if the attacks misses or not
 
-	string getLabel();
+	string getLabel(); //Get the name of the attack
 
-	Weapon* getWeaponUsed();
-	void setWeaponUsed(Weapon* w);
+	Weapon* getWeaponUsed(); //Get the weapon used (used to reduce the durability of the weapon)
+	void setWeaponUsed(Weapon* w); //Change the weapon used on the attack
 
-	Dice getDices();
+	Dice getDices(); //Get the dice class to determine the damage
 
-	DamageType getDamageType();
+	DamageType getDamageType(); //Get the type of damage
 
 };
 

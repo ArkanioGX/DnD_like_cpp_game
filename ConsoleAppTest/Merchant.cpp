@@ -17,7 +17,7 @@ void Merchant::setMoney(unsigned int m) { mMoney = m; }
 
 array<Weapon, 6> Merchant::getWeaponInventory() { return mWeaponInventory; }
 
-bool Merchant::canBuy(Weapon w){
+bool Merchant::canBuy(Weapon w){ //Check if the merchant have enough money to buy the weapon
 	return ((w.getWeaponCost() * w.getWeaponDurability()) <= mMoney);
 }
 

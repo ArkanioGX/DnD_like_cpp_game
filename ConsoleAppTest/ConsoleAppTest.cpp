@@ -109,17 +109,7 @@ int main()
     Character Player = Character(cFName,cLName,cCPhrase,cC,cR,cBW, vA);
     
     //////////////////////////////// TEST SECTION /////////////////////////////////////////
-    cout << Player.getCatchPhrase() << endl;
-    cout << "And my weapon is " << Player.getWeapon()->getWeaponName() << "\n\n";
-
-    Player.setMoney(20);
-
-    Weapon w1 = Weapon("Iron Axe", "A really basic axe that was stolen from your local lumberjack", WeaponType::Axe, 2, 7, 20);
-
-    Player.addStoredWeapons(w1);
-
-    Player.swapWeapon(0);
-
+    Player.setMoney(1000);
     ///////////////////////////////////////////////////////////////////////////////////////
 
     //First enemy setup
@@ -199,11 +189,11 @@ int main()
     
 }
 
-void showPV(Creature* p, Creature* e) {
+void showPV(Creature* p, Creature* e) { //Prepare the HP Bar
     cout << "Your PV [" << pvBar(p->getHP(), p->getMaxHP(), 20) << "] -|- Enemy PV [" << pvBar(e->getHP(), e->getMaxHP(), 20) << "]";
 }
 
-string pvBar(int hp, int hpMax, int n) {
+string pvBar(int hp, int hpMax, int n) { //Prepare the numbers of | and . for the showPV()
     string s;
     float hpPrct = float(hp) / float(hpMax);
     for (float i = 0; i < n; i++) {
@@ -213,7 +203,7 @@ string pvBar(int hp, int hpMax, int n) {
     return s;
 }
 
-void Combat(Character* p, Creature* e) {
+void Combat(Character* p, Creature* e) { //Engage the combat between the player and one creature
     bool playerTurn = true;
     bool fightFinished = false;
     cout << "\n\n\n\n\n\n\n\n\n";
@@ -292,7 +282,7 @@ void Combat(Character* p, Creature* e) {
     } while (!fightFinished);
 }
 
-Monster newEnemy() {
+Monster newEnemy() { //Prepare a new enemy
     vector<Monster> cList = {
         Monster("Thundercat","Every news about this cat is a shocking news",50,1, vector<Attack>{
             Attack("Headbutt", new Weapon(), Dice(1,3,0), DamageType::Bludgeoning),

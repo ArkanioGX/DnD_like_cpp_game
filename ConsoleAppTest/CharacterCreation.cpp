@@ -1,7 +1,7 @@
 #include "CharacterCreation.h"
 
 
-CharacterRace CharacterCreation::changeRace(){
+CharacterRace CharacterCreation::changeRace(){ //Output the race of the player
     int answer;
     CharacterRace cR = CharacterRace::Human;
     do {
@@ -33,7 +33,7 @@ CharacterRace CharacterCreation::changeRace(){
     return cR;
 }
 
-CharacterClass CharacterCreation::changeClass(){
+CharacterClass CharacterCreation::changeClass(){ //Output the class of the player
     int answer;
     CharacterClass cC;
     do{
@@ -73,7 +73,7 @@ CharacterClass CharacterCreation::changeClass(){
 return cC;
 }
 
-Weapon CharacterCreation::getBaseClassWeapon(CharacterClass cc){
+Weapon CharacterCreation::getBaseClassWeapon(CharacterClass cc){ //Output the weapon of the player based on the class
     Weapon cBW;
     switch (cc)
     {
@@ -102,7 +102,7 @@ Weapon CharacterCreation::getBaseClassWeapon(CharacterClass cc){
     return cBW;
 }
 
-vector<Attack> CharacterCreation::getClassAttacks(CharacterClass cc, Weapon* w) {
+vector<Attack> CharacterCreation::getClassAttacks(CharacterClass cc, Weapon* w) { // Output the attacks of the player based on the class
     vector <Attack> vAtt;
     switch (cc)
     {
@@ -143,21 +143,21 @@ vector<Attack> CharacterCreation::getClassAttacks(CharacterClass cc, Weapon* w) 
     return vAtt;
 }
 
-string CharacterCreation::changeFirstName(){
+string CharacterCreation::changeFirstName(){ //Output the first name of the player
     string Phrase;
     cout << "What's your first name ?" << endl;
     getline(cin, Phrase);
     return Phrase;
 }
 
-string CharacterCreation::changeLastName() {
+string CharacterCreation::changeLastName() { //Output the last name of the player
     string Phrase;
     cout << "What's your last name ?" << endl;
     getline(cin, Phrase);
     return Phrase;
 }
 
-string CharacterCreation::changeCatchPhrase() {
+string CharacterCreation::changeCatchPhrase() { //Output the catchprase of the player
     string Phrase;
     cout << "What's your catchphrase ?" << endl;
     getline(cin, Phrase);

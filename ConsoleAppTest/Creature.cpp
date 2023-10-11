@@ -69,7 +69,7 @@ void Creature::setDef(unsigned int d) {
 	cDef = d;
 }   
 
-void Creature::attack(Creature* c, Attack a) {
+void Creature::attack(Creature* c, Attack a) { //Ability to attack another creature
 	bool attackSuccess = a.resolve(c->getDef());
 	if (attackSuccess) {
 		vector<int> dmg;

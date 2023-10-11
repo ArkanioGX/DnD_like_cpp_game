@@ -14,12 +14,12 @@ public:
 	Dice();
 	Dice(unsigned int n, unsigned int v, unsigned int b);
 
-	vector<int> Roll();
+	vector<int> Roll(); //Roll the dice
 
-	string getString();
-	static string getRollString(vector<int> r);
+	string getString(); //Get the value of the dice as a string (like "3d6 + 2")
+	static string getRollString(vector<int> r); //Get the value of the roll() as a string
 
-	int getBonus();
-	static int getRollTotal(vector<int> r);
+	int getBonus(); //Get the bonus damage of the dice
+	static int getRollTotal(vector<int> r); //get the roll value as a simple int
 };
 
